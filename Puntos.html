@@ -19,16 +19,20 @@
           border: solid 1px black;
           display: none;
         }
+
     </style>
 </head>
 
 <body>
 <div id="tooltip">Tooltip</div>
-    <svg id="container" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
-        <g id="body" style="transform:translate(40px,10px)"></g>
-        <g id="yAxis"></g>
-        <g id="xAxis"></g>
-    </svg>
+<div id="div1">
+  <svg id="container" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
+    <g id="body" style="transform:translate(40px,10px)"></g>
+    <g id="yAxis"></g>
+    <g id="xAxis"></g>
+  </svg>
+</div>
+
 </body>
 <script src="js/d3.js"></script>
 <script>
@@ -62,60 +66,37 @@
         let yScale = d3.scaleLinear().range([bodyHeight, 0])
             .domain([0, yExtent[1] + 100])
 
-        let joinCircleM = body.selectAll("circle")
+        let joinCircle = body.selectAll("circle")
             .data(clients.filter(d=>d.Pretermino == 0 && d.BIRTH_sexo5 == 1))
 
-        let newelementsCircleM = joinCircleM.enter()
+        let newelementsCircle = joinCircle.enter()
             .append("circle")
             .style("fill", "blue")
-            .style("r", "2")
+            .style("r", "5")
 
-        let joinCircleF = body.selectAll("circle")
-            .data(clients.filter(d=>d.Pretermino == 0 && d.BIRTH_sexo5 == 2))
 
-        let newelementsCircleF = joinCircleF.enter()
-            .append("circle")
-            .style("fill", "red")
-            .style("r", "2")
+        let joinRect = body.selectAll("rect")
+            .data(clients.filter(d=>(d.Pretermino === '1' && d.BIRTH_sexo5 == '1')))
 
-        let joinRectM = body.selectAll("rect")
-            .data(clients.filter(d=>d.Pretermino == 1 && d.BIRTH_sexo5 == 1))
-
-        let newelementsRectM = joinRectM.enter()
+        let newelementsRect = joinRect.enter()
             .append('rect')
             .attr('width', 5)
             .attr('height', 5)
-            .style('fill', 'red');
+            .attr('fill', 'blue')
 
 
-        let joinRectF = body.selectAll("rect")
-            .data(clients.filter(d=>d.Pretermino == 1 && d.BIRTH_sexo5 == 2))
 
-        let newelementsRectF = joinRectF.enter()
-            .append('rect')
-            .attr('width', 5)
-            .attr('height', 5)
-            .style('fill', 'blue');
-
-        joinRectM.merge(newelementsRectM)
+        joinRect.merge(newelementsRect)
             .transition()
             .attr("x", d => xScale(+d.BIRTH_peso5))
             .attr("y", d => yScale(+d.BIRTH_talla5))
 
-        joinRectF.merge(newelementsRectF)
-            .transition()
-            .attr("x", d => xScale(+d.BIRTH_peso5))
-            .attr("y", d => yScale(+d.BIRTH_talla5))
 
-        joinCircleM.merge(newelementsCircleM)
+        joinCircle.merge(newelementsCircle)
             .transition()
             .attr("cx", d => xScale(+d.BIRTH_peso5))
             .attr("cy", d => yScale(+d.BIRTH_talla5))
 
-        joinCircleF.merge(newelementsCircleF)
-            .transition()
-            .attr("cx", d => xScale(+d.BIRTH_peso5))
-            .attr("cy", d => yScale(+d.BIRTH_talla5))
 
         let yAxis = d3.axisLeft(yScale);
         let yAxisGroup = d3.select("#yAxis")
