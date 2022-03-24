@@ -8,7 +8,7 @@ function showTooltip2(text, coords) {
   let x = coords[0];
   let y = coords[1];
 
-  d3.select("#tooltip")
+  d3.select("#tooltip2")
     .style("display", "block")
     .style("top", y)
     .style("left", x)
@@ -99,7 +99,7 @@ function showData2(clients) {
         showTooltip2(dat, [d3.event.clientX, d3.event.clientY + 30])
       })
       .on("mouseleave", (d) => {
-        d3.select("#tooltip").style("display", "none")
+        d3.select("#tooltip2").style("display", "none")
       })
 
     joinRect.merge(newelementsRect)
@@ -120,7 +120,7 @@ function showData2(clients) {
         showTooltip2(dat, [d3.event.clientX, d3.event.clientY + 30])
       })
       .on("mouseleave", (d) => {
-        d3.select("#tooltip").style("display", "none")
+        d3.select("#tooltip2").style("display", "none")
       })
 
   });
