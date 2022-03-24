@@ -19,14 +19,14 @@ function showData(clients) {
 
     let bodyWidth = 450;
     let bodyHeight = 450;
-    let xExtent = d3.extent(clients, d => +d.BIRTH_peso5)
+    let xExtent = d3.extent(clients, d => +d.FOLL12M_peso12)
     let xScale = d3.scaleLinear().range([0, bodyWidth])
         .domain([0, xExtent[1] + 100])
 
 
-    let yExtent = d3.extent(clients, d => +d.BIRTH_talla5)
+    let yExtent = d3.extent(clients, d => +d.FOLL12M_talla12)
     let yScale = d3.scaleLinear().range([bodyHeight, 0])
-        .domain([0, yExtent[1] + 100])
+        .domain([0, yExtent[1] + 30])
 
     let joinCircle = body.selectAll("circle")
         .data(clients.filter(d=>d.Pretermino == 0))
