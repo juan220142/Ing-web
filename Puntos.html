@@ -62,37 +62,57 @@
         let yScale = d3.scaleLinear().range([bodyHeight, 0])
             .domain([0, yExtent[1] + 100])
 
-        /*
-            
-        join.merge(newelements)
-            .transition()
-            .attr("cx", d => xScale(+d.BIRTH_peso5))
-            .attr("cy", d => yScale(+d.BIRTH_talla5))
-*/
+        let joinCircleM = body.selectAll("circle")
+            .data(clients.filter(d=>d.Pretermino == 0 && d.BIRTH_sexo5 == 1))
 
-        let joinCircle = body.selectAll("circle")
-            .data(clients.filter(d=>d.Pretermino == 0))
-
-        let newelementsCircle = joinCircle.enter()
+        let newelementsCircleM = joinCircleM.enter()
             .append("circle")
             .style("fill", "blue")
             .style("r", "2")
 
-        let joinRect = body.selectAll("rect")
-            .data(clients.filter(d=>d.Pretermino == 1))
+        let joinCircleF = body.selectAll("circle")
+            .data(clients.filter(d=>d.Pretermino == 0 && d.BIRTH_sexo5 == 2))
+
+        let newelementsCircleF = joinCircleF.enter()
+            .append("circle")
+            .style("fill", "red")
+            .style("r", "2")
+
+        let joinRectM = body.selectAll("rect")
+            .data(clients.filter(d=>d.Pretermino == 1 && d.BIRTH_sexo5 == 1))
         
-        let newelementsRect = joinRect.enter()
+        let newelementsRectM = joinRectM.enter()
             .append('rect')
             .attr('width', 5)
             .attr('height', 5)
-            .style('fill', '#31708f');
+            .style('fill', 'red');
+        
+        
+        let joinRectF = body.selectAll("rect")
+            .data(clients.filter(d=>d.Pretermino == 1 && d.BIRTH_sexo5 == 2))
+        
+        let newelementsRectF = joinRectF.enter()
+            .append('rect')
+            .attr('width', 5)
+            .attr('height', 5)
+            .style('fill', 'blue');
 
-        joinRect.merge(newelementsRect)
+        joinRectM.merge(newelementsRectM)
+            .transition()
+            .attr("x", d => xScale(+d.BIRTH_peso5))
+            .attr("y", d => yScale(+d.BIRTH_talla5))
+
+        joinRectF.merge(newelementsRectF)
             .transition()
             .attr("x", d => xScale(+d.BIRTH_peso5))
             .attr("y", d => yScale(+d.BIRTH_talla5))
     
-        joinCircle.merge(newelementsCircle)
+        joinCircleM.merge(newelementsCircleM)
+            .transition()
+            .attr("cx", d => xScale(+d.BIRTH_peso5))
+            .attr("cy", d => yScale(+d.BIRTH_talla5))
+        
+        joinCircleF.merge(newelementsCircleF)
             .transition()
             .attr("cx", d => xScale(+d.BIRTH_peso5))
             .attr("cy", d => yScale(+d.BIRTH_talla5))
@@ -118,7 +138,7 @@
             yAxis.scale(newYScale)
             yAxisGroup.call(yAxis)
 
-            joinCircle.merge(newelementsCircle)
+            joinCircleM.merge(newelementsCircleM)
                 .attr("cx", d => newXScale(+d.BIRTH_peso5))
                 .attr("cy", d => newYScale(+d.BIRTH_talla5))
               .on("mouseenter", (d) => {
@@ -131,7 +151,33 @@
                 d3.select("#tooltip").style("display", "none")
               })
 
-              joinRect.merge(newelementsRect)
+              joinCircleF.merge(newelementsCircleF)
+                .attr("cx", d => newXScale(+d.BIRTH_peso5))
+                .attr("cy", d => newYScale(+d.BIRTH_talla5))
+              .on("mouseenter", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
+              })
+              .on("mousemove", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY + 30])
+              })
+              .on("mouseleave", (d) => {
+                d3.select("#tooltip").style("display", "none")
+              })
+
+              joinRectM.merge(newelementsRectM)
+                .attr("x", d => newXScale(+d.BIRTH_peso5))
+                .attr("y", d => newYScale(+d.BIRTH_talla5))
+              .on("mouseenter", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
+              })
+              .on("mousemove", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY + 30])
+              })
+              .on("mouseleave", (d) => {
+                d3.select("#tooltip").style("display", "none")
+              })
+
+              joinRectF.merge(newelementsRectF)
                 .attr("x", d => newXScale(+d.BIRTH_peso5))
                 .attr("y", d => newYScale(+d.BIRTH_talla5))
               .on("mouseenter", (d) => {
