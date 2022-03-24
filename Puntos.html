@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            padding-left: 20px;
+        }
+
+        #details {
+            padding: 10px;
+        }
+        #tooltip {
+          position: fixed;
+          top: 10px;
+          left: 0px;
+          padding: 5px;
+          background-color: rgba(255, 255, 255, 0.8);
+          border: solid 1px black;
+          display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="tooltip">Tooltip</div>
+    <svg id="container" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
+        <g id="body" style="transform:translate(40px,10px)"></g>
+        <g id="yAxis"></g>
+        <g id="xAxis"></g>
+    </svg>
+</body>
+<script src="js/d3.js"></script>
+<script>
+    let body = d3.select("#body")
+    let container = d3.select("#container")
+
+    d3.csv("data3.csv").then((data) => {
+        showData(data);
+    })
+    function showTooltip(text, coords) {
+      let x = coords[0];
+      let y = coords[1];
+
+      d3.select("#tooltip")
+        .style("display", "block")
+        .style("top", y)
+        .style("left", x)
+        .text(text)
+    }
+    function showData(clients) {
+
+
+        let bodyWidth = 450;
+        let bodyHeight = 450;
+        let xExtent = d3.extent(clients, d => +d.Pretermino)
+        let xScale = d3.scaleLinear().range([0, bodyWidth])
+            .domain([xExtent[0] - 5, xExtent[1] + 5])
+
+
+        let yExtent = d3.extent(clients, d => +d.FOLL12M_peso12)
+        let yScale = d3.scaleLinear().range([bodyHeight, 0])
+            .domain([yExtent[0] - 5, yExtent[1] + 5])
+
+        let join = body.selectAll("circle")
+            .data(clients)
+
+        let newelements = join.enter()
+            .append("circle")
+            .style("fill", "red")
+            .style("r", "2")
+
+        join.merge(newelements)
+            .transition()
+            .attr("cx", d => xScale(+d.Pretermino))
+            .attr("cy", d => yScale(+d.FOLL12M_peso12))
+
+        let yAxis = d3.axisLeft(yScale);
+        let yAxisGroup = d3.select("#yAxis")
+            .style("transform", "translate(40px, 10px)")
+            .call(yAxis)
+
+        let xAxis = d3.axisBottom(xScale)
+        let xAxisGroup = d3.select("#xAxis")
+            .style("transform", `translate(40px, ${bodyHeight + 10}px)`)
+            .call(xAxis)
+
+        let zoom = d3.zoom()
+        zoom.on("zoom", function (a, b) {
+            let newXScale = d3.event.transform.rescaleX(xScale);
+            let newYScale = d3.event.transform.rescaleY(yScale);
+
+            xAxis.scale(newXScale)
+            xAxisGroup.call(xAxis)
+
+            yAxis.scale(newYScale)
+            yAxisGroup.call(yAxis)
+
+            join.merge(newelements)
+                .attr("cx", d => newXScale(+d.Pretermino))
+                .attr("cy", d => newYScale(+d.FOLL12M_peso12))
+              .on("mouseenter", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
+              })
+              .on("mousemove", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY + 30])
+              })
+              .on("mouseleave", (d) => {
+                d3.select("#tooltip").style("display", "none")
+              })
+
+        });
+        container.call(zoom)
+
+    }
+
+
+
+</script>
+
+</html>
