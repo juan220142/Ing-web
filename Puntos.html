@@ -62,18 +62,35 @@
         let yScale = d3.scaleLinear().range([bodyHeight, 0])
             .domain([0, yExtent[1] + 100])
 
-        let join = body.selectAll("circle")
-            .data(clients)
-
-        let newelements = join.enter()
-            .append("circle")
-            .style("fill", "blue")
-            .style("r", "2")
-
+        /*
+            
         join.merge(newelements)
             .transition()
             .attr("cx", d => xScale(+d.BIRTH_peso5))
             .attr("cy", d => yScale(+d.BIRTH_talla5))
+*/
+
+        let joinCircle = body.selectAll("circle")
+            .data(clients)
+
+        let newelementsCircle = joinCircle.enter()
+            .append("circle")
+            .style("fill", "blue")
+            .style("r", "2")
+
+        let joinRect = body.selectAll("rect")
+            .data(clients)
+
+        let newelementsRect = joinRect.enter()
+            .append('rect')
+            .attr('width', 2)
+            .attr('height', 2)
+            .style('fill', '#31708f');
+
+        joinRect.merge(newelementsRect)
+            .transition()
+            .attr("x", d => xScale(+d.BIRTH_peso5))
+            .attr("y", d => yScale(+d.BIRTH_talla5))
 
         let yAxis = d3.axisLeft(yScale);
         let yAxisGroup = d3.select("#yAxis")
