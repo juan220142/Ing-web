@@ -80,17 +80,17 @@
 
         let joinRectM = body.selectAll("rect")
             .data(clients.filter(d=>d.Pretermino == 1 && d.BIRTH_sexo5 == 1))
-        
+
         let newelementsRectM = joinRectM.enter()
             .append('rect')
             .attr('width', 5)
             .attr('height', 5)
             .style('fill', 'red');
-        
-        
+
+
         let joinRectF = body.selectAll("rect")
             .data(clients.filter(d=>d.Pretermino == 1 && d.BIRTH_sexo5 == 2))
-        
+
         let newelementsRectF = joinRectF.enter()
             .append('rect')
             .attr('width', 5)
@@ -106,12 +106,12 @@
             .transition()
             .attr("x", d => xScale(+d.BIRTH_peso5))
             .attr("y", d => yScale(+d.BIRTH_talla5))
-    
+
         joinCircleM.merge(newelementsCircleM)
             .transition()
             .attr("cx", d => xScale(+d.BIRTH_peso5))
             .attr("cy", d => yScale(+d.BIRTH_talla5))
-        
+
         joinCircleF.merge(newelementsCircleF)
             .transition()
             .attr("cx", d => xScale(+d.BIRTH_peso5))
@@ -126,7 +126,7 @@
         let xAxisGroup = d3.select("#xAxis")
             .style("transform", `translate(40px, ${bodyHeight + 10}px)`)
             .call(xAxis)
-            
+
             let zoom = d3.zoom()
         zoom.on("zoom", function (a, b) {
             let newXScale = d3.event.transform.rescaleX(xScale);
@@ -155,10 +155,18 @@
                 .attr("cx", d => newXScale(+d.BIRTH_peso5))
                 .attr("cy", d => newYScale(+d.BIRTH_talla5))
               .on("mouseenter", (d) => {
-                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
+                let dat= "parto por cesarea"
+                if(d.BIRTH_cesarea==0){
+                  dat="parto natural";
+                }
+                showTooltip(dat, [d3.event.clientX, d3.event.clientY])
               })
               .on("mousemove", (d) => {
-                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY + 30])
+                let dat= "parto por cesarea"
+                if(d.BIRTH_cesarea==0){
+                  dat="parto natural";
+                }
+                showTooltip(dat, [d3.event.clientX, d3.event.clientY + 30])
               })
               .on("mouseleave", (d) => {
                 d3.select("#tooltip").style("display", "none")
@@ -181,10 +189,18 @@
                 .attr("x", d => newXScale(+d.BIRTH_peso5))
                 .attr("y", d => newYScale(+d.BIRTH_talla5))
               .on("mouseenter", (d) => {
-                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
+                let dat= "parto por cesarea"
+                if(d.BIRTH_cesarea==0){
+                  dat="parto natural";
+                }
+                showTooltip("cesarea"+d.BIRTH_cesarea, [d3.event.clientX, d3.event.clientY])
               })
               .on("mousemove", (d) => {
-                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY + 30])
+                let dat= "parto por cesarea"
+                if(d.BIRTH_cesarea==0){
+                  dat="parto natural";
+                }
+                showTooltip(dat, [d3.event.clientX, d3.event.clientY + 30])
               })
               .on("mouseleave", (d) => {
                 d3.select("#tooltip").style("display", "none")
