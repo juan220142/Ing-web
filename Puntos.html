@@ -71,7 +71,7 @@
 */
 
         let joinCircle = body.selectAll("circle")
-            .data(clients)
+            .data(clients.filter(d=>d.Pretermino == 0))
 
         let newelementsCircle = joinCircle.enter()
             .append("circle")
@@ -79,8 +79,8 @@
             .style("r", "2")
 
         let joinRect = body.selectAll("rect")
-            .data(clients)
-
+            .data(clients.filter(d=>d.Pretermino == 1))
+        
         let newelementsRect = joinRect.enter()
             .append('rect')
             .attr('width', 2)
@@ -91,6 +91,11 @@
             .transition()
             .attr("x", d => xScale(+d.BIRTH_peso5))
             .attr("y", d => yScale(+d.BIRTH_talla5))
+    
+        joinCircle.merge(newelementsCircle)
+            .transition()
+            .attr("cx", d => xScale(+d.BIRTH_peso5))
+            .attr("cy", d => yScale(+d.BIRTH_talla5))
 
         let yAxis = d3.axisLeft(yScale);
         let yAxisGroup = d3.select("#yAxis")
