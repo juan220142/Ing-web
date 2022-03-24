@@ -1,56 +1,40 @@
 <html>
 
 <head>
-    <style>
-        body {
-            display: flex;
-            padding-left: 20px;
-        }
-
-        #details {
-            padding: 10px;
-        }
-        #tooltip {
-          position: fixed;
-          top: 10px;
-          left: 0px;
-          padding: 5px;
-          background-color: rgba(255, 255, 255, 0.8);
-          border: solid 1px black;
-          display: none;
-        }
-        #div1{
-          width: 500px;
-          height: 500px;
-        }
-        #div2{
-          width: 500px;
-          height: 500px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/punto1.css">
 </head>
 
-<body>
-<div id="tooltip">Tooltip</div>
-<div id="div1">
-  <svg id="container" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
-    <g id="body" style="transform:translate(40px,10px)"></g>
-    <g id="yAxis"></g>
-    <g id="xAxis"></g>
-  </svg>
-</div>
-<div id="div2">
-  <svg id="container2" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
-    <g id="body2" style="transform:translate(40px,10px)"></g>
-    <g id="yAxis2"></g>
-    <g id="xAxis2"></g>
-  </svg>
-</div>
+<body id="bod">
 
-</body>
-<script src="js/d3.js"></script>
-<script src="js/Punto2_1.js"></script>
-<script src="js/Punto2_2.js"></script>
-
+    <div id="fondo">
+    
+    <div id="div1">
+      <div id="tooltip"></div>
+      <h1>Analisis recien nacido</h1>
+      <svg id="container" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
+        <g id="body" style="transform:translate(40px,10px)"></g>
+        <g id="yAxis"></g>
+        <g id="xAxis"></g>
+      </svg>
+    </div>
+    <div id="div2">
+      <div id="tooltip2"></div>
+      <h1>Analisis doce meses de edad</h1>
+      <svg id="container2" height="500" width="500" , style="border: solid 1px #000; margin-top: 10px">
+        <g id="body2" style="transform:translate(40px,10px)"></g>
+        <g id="yAxis2"></g>
+        <g id="xAxis2"></g>
+      </svg>
+    </div>
+      <form method="get" action="/page2">
+        <button type="submit" id="but">Seccion 2</button>
+      </form>
+    </div>
+    
+    </body>
+    <script src="js/d3.js"></script>
+    <script src="js/Punto2_1.js"></script>
+    <script src="js/Punto2_2.js"></script>
+    
 </html>
+    
