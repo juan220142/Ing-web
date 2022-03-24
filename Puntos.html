@@ -83,8 +83,8 @@
         
         let newelementsRect = joinRect.enter()
             .append('rect')
-            .attr('width', 2)
-            .attr('height', 2)
+            .attr('width', 5)
+            .attr('height', 5)
             .style('fill', '#31708f');
 
         joinRect.merge(newelementsRect)
@@ -118,9 +118,9 @@
             yAxis.scale(newYScale)
             yAxisGroup.call(yAxis)
 
-            join.merge(newelements)
-                .attr("cx", d => newXScale(+d.Pretermino))
-                .attr("cy", d => newYScale(+d.FOLL12M_peso12))
+            joinCircle.merge(newelementsCircle)
+                .attr("cx", d => newXScale(+d.BIRTH_peso5))
+                .attr("cy", d => newYScale(+d.BIRTH_talla5))
               .on("mouseenter", (d) => {
                 showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
               })
@@ -130,6 +130,20 @@
               .on("mouseleave", (d) => {
                 d3.select("#tooltip").style("display", "none")
               })
+
+              joinRect.merge(newelementsRect)
+                .attr("x", d => newXScale(+d.BIRTH_peso5))
+                .attr("y", d => newYScale(+d.BIRTH_talla5))
+              .on("mouseenter", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY])
+              })
+              .on("mousemove", (d) => {
+                showTooltip(d.Name, [d3.event.clientX, d3.event.clientY + 30])
+              })
+              .on("mouseleave", (d) => {
+                d3.select("#tooltip").style("display", "none")
+              })
+
 
         });
         container.call(zoom)
