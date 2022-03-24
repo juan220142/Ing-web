@@ -26,7 +26,7 @@ function showData2(clients) {
 
   let yExtent = d3.extent(clients, d => +d.FOLL12M_talla12)
   let yScale = d3.scaleLinear().range([bodyHeight, 0])
-    .domain([0, yExtent[1] + 100])
+    .domain([0, yExtent[1] + 30])
 
   let joinCircle = body2.selectAll("circle")
     .data(clients.filter(d=>d.Pretermino == 0))
