@@ -23,7 +23,7 @@
 <script>
     let body = d3.select("#body") // selecciono el  <g> body como contenedor
 
-    d3.csv("data.csv").then((data) => { // dirección de datos
+    d3.csv("./doc/data3.csv").then((data) => { // dirección de datos
         showData(data)   // función mostrar datos
         let brush = d3.brush();  // función brush d3.js
 

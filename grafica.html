@@ -35,7 +35,7 @@
   let body = d3.select("#body")
   let container = d3.select("#container")
 
-  d3.csv("data(2).csv").then((data) => {
+  d3.csv("./doc/data3.csv").then((data) => {
     showData(data);
     let brush = d3.brush()
     // función brush d3.js

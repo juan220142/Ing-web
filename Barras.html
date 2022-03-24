@@ -40,7 +40,7 @@
     barchart.attr("height", height)
     barchart.attr("width", width)
 
-    d3.csv("data3.csv")
+    d3.csv("./doc/data3.csv")
         .then((data) => {
             data = data.map(d => {
                 d.BIRTH_talla5 = +d.BIRTH_talla5
