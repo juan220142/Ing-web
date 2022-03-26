@@ -1,9 +1,9 @@
 body {
     display: flex;
     padding-left: 20px;
-  
+
   }
-  
+
   #details {
     padding: 10px;
   }
@@ -60,6 +60,20 @@ body {
     left: 50%;
     top: 50%;
     margin: 450px 0 0 -50px;
-  
+
   }
-  
+  #var1{
+    background-color: #999999;
+    color: white;
+  }
+  #var2{
+    background-color: #999999;
+    color: white;
+  }
+  #graf{
+
+  }
+  #buton{
+    background-color: #999999;
+    color: white;
+  }

@@ -1,13 +1,29 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/punto1.css">
+    <link rel="stylesheet" href="css/punto2.css">
 </head>
 
 <body id="bod">
 
     <div id="fondo">
-    
+      <form id="graf">
+        <input type="button"
+               onclick="gen()"
+               value="graficar" id="buton">
+      </form>
+      <p>Talla</p>
+      <select name="VARIABLE 1" id="var1">
+        <option value="1" >62-70</option>
+        <option value="2">70-86</option>
+        <option value="3"SELECTED>todos</option>
+      </select>
+      <p>pc</p>
+      <select name="VARIABLE 2" id="var2">
+        <option value="1" >42-45</option>
+        <option value="2">46-49</option>
+        <option value="3"SELECTED>todos</option>
+      </select>
     <div id="div1">
       <div id="tooltip"></div>
       <h1>Analisis recien nacido</h1>
@@ -26,15 +42,15 @@
         <g id="xAxis2"></g>
       </svg>
     </div>
-      <form method="get" action="/page2">
-        <button type="submit" id="but">Seccion 2</button>
+      <form method="get" action="./Puntos.html">
+        <button type="submit" id="but">Seccion 1</button>
       </form>
     </div>
-    
+
+
     </body>
     <script src="js/d3.js"></script>
     <script src="js/Punto2_1.js"></script>
     <script src="js/Punto2_2.js"></script>
-    
+
 </html>
-    
