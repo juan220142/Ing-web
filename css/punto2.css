@@ -16,6 +16,15 @@ body {
     border: solid 1px black;
     display: none;
   }
+  #tooltip2{
+    position: fixed;
+    top: 10px;
+    left: 0px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: solid 1px black;
+    display: none;
+  }
   #div1{
     width: 500px;
     height: 500px;
@@ -70,6 +79,15 @@ body {
     background-color: #999999;
     color: white;
   }
+  #var3{
+    background-color: #999999;
+    color: white;
+  }
+  #var4{
+    background-color: #999999;
+    color: white;
+  }
+
   #graf{
 
   }

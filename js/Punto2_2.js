@@ -8,7 +8,13 @@ let dato1;
 let elegido1
 let dato2
 let elegido2
+
+function clear(){
+  body2.selectAll("*").remove()
+}
+
 function elegir() {
+
    dato1 = document.getElementById('var2')
    elegido1 = dato1.options[dato1.selectedIndex].value
    dato2 = document.getElementById('var1')
@@ -39,7 +45,9 @@ function elegir() {
 }
 
 function gen() {
+  clear()
   elegir()
+
   d3.csv("./doc/data3.csv").then((data) => {
   showData2(data);
   })
@@ -55,7 +63,6 @@ function gen() {
     }
 
     function showData2(clients) {
-
 
       let bodyWidth = 450;
       let bodyHeight = 450;
