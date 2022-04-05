@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<script charset="utf-8" type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+
+<title>Example linking two plots with D3</title>
+</head>
+
+<body>
+<h2>Example linking two plots with D3</h2>
+<div id="Graph">
+    <form id="graf">
+        <input type="button" onclick="gen()" value="graficar" id="buton">
+    </form>
+    <p>Talla 12 meses</p>
+    <select name="VARIABLE 1" id="var1">
+        <option value="1" >62-70</option>
+        <option value="2">70-86</option>
+        <option value="3"SELECTED>todos</option>
+    </select>
+    <p>peso 12 meses </p>
+    <select name="VARIABLE 2" id="var2">
+        <option value="1" >7000-8000</option>
+        <option value="2">8500-10000</option>
+        <option value="3"SELECTED>todos</option>
+    </select>
+    <p>Talla 0 meses</p>
+    <select name="VARIABLE 1" id="var3">
+        <option value="1" >34-37</option>
+        <option value="2">38-45</option>
+        <option value="3"SELECTED>todos</option>
+    </select>
+    <p>peso 0 meses </p>
+    <select name="VARIABLE 2" id="var4">
+        <option value="1" >1100-1300</option>
+        <option value="2">1400-1600</option>
+        <option value="3"SELECTED>todos</option>
+    </select>
+</div>
+
+
+
+<div id="tooltip"></div>
+
+<script type="text/javascript" src="./js/Punto3.js"></script>
+</body>
+</html>

@@ -27,7 +27,7 @@ function elegir4() {
     lim_inf1 = 8500;
     lim_sup1 = 10000;
   } else {
-    lim_inf1 = 7000;
+    lim_inf1 = 0;
     lim_sup1 = 12000;
   }
   if (elegido2 == 1) {
@@ -37,19 +37,12 @@ function elegir4() {
     lim_inf2 = 71;
     lim_sup2 = 86;
   } else {
-    lim_inf2 = 62;
-    lim_sup2 = 86;
+    lim_inf2 = 0;
+    lim_sup2 = 100;
   }
   console.log(lim_sup1)
   console.log(lim_sup2)
 }
-
-
-
-
-
-
-
 
 function gen4() {
   clear4()
@@ -88,6 +81,7 @@ function gen4() {
 
     let newelementsCircle = joinCircle.enter()
       .append("circle")
+      .attr("class", function(d) { return "pt" + d.id; })
       .style("fill", "blue")
       .style("opacity", "0.5")
       .style("r", "3")
@@ -98,6 +92,7 @@ function gen4() {
 
     let newelementsRect = joinRect.enter()
       .append('rect')
+      .attr("class", function(d) { return "sq" + d.id; })
       .attr('width', 5)
       .attr('height', 5)
       .style("opacity", "0.5")
@@ -140,13 +135,21 @@ function gen4() {
         .attr("cx", d => newXScale(+d.FOLL12M_peso12))
         .attr("cy", d => newYScale(+d.FOLL12M_talla12))
         .on("mouseenter", (d) => {
+          d3.selectAll("circle.pt" + d.id)
+            .style("fill", "black")
+            .style("opacity", "1")
+            .style("r", "10")
           let dat = "parto por cesarea"
           if (d.BIRTH_cesarea == 0) {
             dat = "parto natural";
           }
           showTooltip2(dat, [d3.event.clientX, d3.event.clientY])
         })
-        .on("mousemove", (d) => {
+        .on("mousemove", (d) => {   
+          d3.selectAll("circle.pt" + d.id)
+            .style("fill", "black")
+            .style("opacity", "1")
+            .style("r", "10")         
           let dat = "parto por cesarea"
           if (d.BIRTH_cesarea == 0) {
             dat = "parto natural";
@@ -154,13 +157,25 @@ function gen4() {
           showTooltip2(dat, [d3.event.clientX, d3.event.clientY + 30])
         })
         .on("mouseleave", (d) => {
+          d3.selectAll("circle.pt" + d.id)
+            .style("fill", "blue")
+            .style("opacity", "0.5")
+            .style("r", "3")
           d3.select("#tooltip2").style("display", "none")
         })
+  
 
       joinRect.merge(newelementsRect)
         .attr("x", d => newXScale(+d.FOLL12M_peso12))
         .attr("y", d => newYScale(+d.FOLL12M_talla12))
         .on("mouseenter", (d) => {
+          console.log(d.id)
+
+          d3.selectAll("rect.sq" + d.id)
+            .attr('width', 15)
+            .attr('height', 15)
+            .style("opacity", "1")
+            .attr('fill', 'black')
           let dat = "parto por cesarea"
           if (d.BIRTH_cesarea == 0) {
             dat = "parto natural";
@@ -168,6 +183,11 @@ function gen4() {
           showTooltip2(dat, [d3.event.clientX, d3.event.clientY])
         })
         .on("mousemove", (d) => {
+          d3.selectAll("rect.sq" + d.id)
+            .attr('width', 15)
+            .attr('height', 15)
+            .style("opacity", "1")
+            .attr('fill', 'black')
           let dat = "parto por cesarea"
           if (d.BIRTH_cesarea == 0) {
             dat = "parto natural";
@@ -175,11 +195,15 @@ function gen4() {
           showTooltip2(dat, [d3.event.clientX, d3.event.clientY + 30])
         })
         .on("mouseleave", (d) => {
+          d3.selectAll("rect.sq" + d.id)
+            .attr('width', 5)
+            .attr('height', 5)
+            .style("opacity", "0.5")
+            .attr('fill', 'red')
           d3.select("#tooltip2").style("display", "none")
         })
 
     });
     container2.call(zoom)
-
   }
 }

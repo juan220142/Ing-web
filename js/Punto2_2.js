@@ -80,6 +80,7 @@ function gen() {
 
       let newelementsCircle = joinCircle.enter()
         .append("circle")
+        .attr("class", function(d) { return "pt" + d.BIRTH_sexo5; })
         .style("fill", "green")
         .style("opacity", "0.5")
         .style("r", "3")
@@ -90,6 +91,7 @@ function gen() {
 
       let newelementsRect = joinRect.enter()
         .append('rect')
+        .attr("class", function(d) { return "pt" + d.BIRTH_sexo5; })
         .attr('width', 5)
         .attr('height', 5)
         .style("opacity", "0.5")
@@ -132,6 +134,15 @@ function gen() {
           .attr("cx", d => newXScale(+d.FOLL12M_pc12))
           .attr("cy", d => newYScale(+d.FOLL12M_talla12))
           .on("mouseenter", (d) => {
+            d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+              .style("fill", "black")
+              .style("opacity", "0.5")
+              .style("r", "10")
+            d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+              .attr('width', 15)
+              .attr('height', 15)
+              .style("opacity", "0.5")
+              .attr('fill', 'black')
             let dat = "parto por cesarea"
             if (d.BIRTH_cesarea == 0) {
               dat = "parto natural";
@@ -139,6 +150,15 @@ function gen() {
             showTooltip2(dat, [d3.event.clientX, d3.event.clientY])
           })
           .on("mousemove", (d) => {
+            d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+              .style("fill", "black")
+              .style("opacity", "0.5")
+              .style("r", "10")
+            d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+              .attr('width', 15)
+              .attr('height', 15)
+              .style("opacity", "0.5")
+              .attr('fill', 'black')
             let dat = "parto por cesarea"
             if (d.BIRTH_cesarea == 0) {
               dat = "parto natural";
@@ -146,6 +166,15 @@ function gen() {
             showTooltip2(dat, [d3.event.clientX, d3.event.clientY + 30])
           })
           .on("mouseleave", (d) => {
+            d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+              .style("fill", "blue")
+              .style("opacity", "0.5")
+              .style("r", "3")
+            d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+              .attr('width', 5)
+              .attr('height', 5)
+              .style("opacity", "0.5")
+              .attr('fill', 'red')
             d3.select("#tooltip2").style("display", "none")
           })
 
@@ -153,6 +182,15 @@ function gen() {
           .attr("x", d => newXScale(+d.FOLL12M_pc12))
           .attr("y", d => newYScale(+d.FOLL12M_talla12))
           .on("mouseenter", (d) => {
+            d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+              .style("fill", "black")
+              .style("opacity", "0.5")
+              .style("r", "10")
+            d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+              .attr('width', 15)
+              .attr('height', 15)
+              .style("opacity", "0.5")
+              .attr('fill', 'black')
             let dat = "parto por cesarea"
             if (d.BIRTH_cesarea == 0) {
               dat = "parto natural";
@@ -160,6 +198,15 @@ function gen() {
             showTooltip2(dat, [d3.event.clientX, d3.event.clientY])
           })
           .on("mousemove", (d) => {
+            d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+              .style("fill", "black")
+              .style("opacity", "0.5")
+              .style("r", "10")
+            d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+              .attr('width', 15)
+              .attr('height', 15)
+              .style("opacity", "0.5")
+              .attr('fill', 'black')
             let dat = "parto por cesarea"
             if (d.BIRTH_cesarea == 0) {
               dat = "parto natural";
@@ -167,6 +214,15 @@ function gen() {
             showTooltip2(dat, [d3.event.clientX, d3.event.clientY + 30])
           })
           .on("mouseleave", (d) => {
+            d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+              .style("fill", "blue")
+              .style("opacity", "0.5")
+              .style("r", "3")
+            d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+              .attr('width', 5)
+              .attr('height', 5)
+              .style("opacity", "0.5")
+              .attr('fill', 'red')
             d3.select("#tooltip2").style("display", "none")
           })
 

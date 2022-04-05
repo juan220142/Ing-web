@@ -79,6 +79,7 @@ function gen2() {
 
     let newelementsCircle = joinCircle.enter()
       .append("circle")
+      .attr("class", function(d) { return "pt" + d.BIRTH_sexo5; })
       .style("fill", "green")
       .style("opacity", "0.5")
       .style("r", "3")
@@ -89,6 +90,7 @@ function gen2() {
 
     let newelementsRect = joinRect.enter()
       .append('rect')
+      .attr("class", function(d) { return "pt" + d.BIRTH_sexo5; })
       .attr('width', 5)
       .attr('height', 5)
       .style("opacity", "0.5")
@@ -131,6 +133,15 @@ function gen2() {
         .attr("cx", d => newXScale(+d.BIRTH_pc5))
         .attr("cy", d => newYScale(+d.BIRTH_talla5))
         .on("mouseenter", (d) => {
+          d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+            .style("fill", "black")
+            .style("opacity", "1")
+            .style("r", "10")
+          d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+            .attr('width', 15)
+            .attr('height', 15)
+            .style("opacity", "1")
+            .attr('fill', 'black')
           let dat = "Hombre"
           if (d.BIRTH_sexo5 == 2) {
             dat = "Mujer";
@@ -138,6 +149,15 @@ function gen2() {
           showTooltip(dat, [d3.event.clientX, d3.event.clientY])
         })
         .on("mousemove", (d) => {
+          d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+            .style("fill", "black")
+            .style("opacity", "0.5")
+            .style("r", "10")
+          d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+            .attr('width', 15)
+            .attr('height', 15)
+            .style("opacity", "0.5")
+            .attr('fill', 'black')
           let dat = "Hombre"
           if (d.BIRTH_sexo5 == 2) {
             dat = "Mujer";
@@ -145,6 +165,15 @@ function gen2() {
           showTooltip(dat, [d3.event.clientX, d3.event.clientY + 30])
         })
         .on("mouseleave", (d) => {
+          d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+            .style("fill", "blue")
+            .style("opacity", "0.5")
+            .style("r", "3")
+          d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+            .attr('width', 5)
+            .attr('height', 5)
+            .style("opacity", "0.5")
+            .attr('fill', 'red')
           d3.select("#tooltip").style("display", "none")
         })
 
@@ -152,6 +181,15 @@ function gen2() {
         .attr("x", d => newXScale(+d.BIRTH_pc5))
         .attr("y", d => newYScale(+d.BIRTH_talla5))
         .on("mouseenter", (d) => {
+          d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+            .style("fill", "black")
+            .style("opacity", "0.5")
+            .style("r", "10")
+          d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+            .attr('width', 15)
+            .attr('height', 15)
+            .style("opacity", "0.5")
+            .attr('fill', 'black')
           let dat = "Hombre"
           if (d.BIRTH_sexo5 == 2) {
             dat = "Mujer";
@@ -159,6 +197,15 @@ function gen2() {
           showTooltip(dat, [d3.event.clientX, d3.event.clientY])
         })
         .on("mousemove", (d) => {
+          d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+            .style("fill", "black")
+            .style("opacity", "0.5")
+            .style("r", "10")
+          d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+            .attr('width', 15)
+            .attr('height', 15)
+            .style("opacity", "0.5")
+            .attr('fill', 'black')
           let dat = "Hombre"
           if (d.BIRTH_sexo5 == 2) {
             dat = "Mujer";
@@ -166,6 +213,15 @@ function gen2() {
           showTooltip(dat, [d3.event.clientX, d3.event.clientY + 30])
         })
         .on("mouseleave", (d) => {
+          d3.selectAll("circle.pt" + d.BIRTH_sexo5)
+            .style("fill", "blue")
+            .style("opacity", "0.5")
+            .style("r", "3")
+          d3.selectAll("rect.pt" + d.BIRTH_sexo5)
+            .attr('width', 5)
+            .attr('height', 5)
+            .style("opacity", "0.5")
+            .attr('fill', 'red')
           d3.select("#tooltip").style("display", "none")
         })
 
