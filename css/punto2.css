@@ -26,16 +26,16 @@ body {
     display: none;
   }
   #div1{
-    width: 25%;
-    height: 25%;
+    width: 500px;
+    height: 500px;
     position: absolute;
     left: 50%;
     top: 50%;
     margin: -250px 0 0 -600px;
   }
   #div2{
-    width: 25%;
-    height: 25%;
+    width: 500px;
+    height: 500px;
     margin: 0 auto;
     position: absolute;
     left: 50%;
@@ -95,3 +95,28 @@ body {
     background-color: #999999;
     color: white;
   }
+#lab1{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 370px 0 0 -100px;
+}
+#lab3{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 80px 0 0 -320px;
+}
+
+#lab2{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 370px 0 0 -100px;
+}
+#lab4{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 80px 0 0 -320px;
+}

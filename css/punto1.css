@@ -26,16 +26,16 @@ body {
   display: none;
 }
 #div1{
-  width: 30%;
-  height: 57%;
+  width: 500px;
+  height: 500px;
   position: absolute;
   left: 50%;
   top: 50%;
   margin: -250px 0 0 -600px;
 }
 #div2{
-  width: 40%;
-  height: 35%;
+  width: 500px;
+  height: 500px;
   margin: 0 auto;
   position: absolute;
   left: 50%;
@@ -90,4 +90,29 @@ background-color: #999999;
 #buton{
   background-color: #999999;
   color: white;
+}
+#lab1{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 370px 0 0 -100px;
+}
+#lab3{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 80px 0 0 -320px;
+}
+
+#lab2{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 370px 0 0 -100px;
+}
+#lab4{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 80px 0 0 -320px;
 }

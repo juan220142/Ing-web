@@ -117,10 +117,12 @@ function gen3() {
       .style("transform", "translate(40px, 10px)")
       .call(yAxis)
 
+
     let xAxis = d3.axisBottom(xScale)
     let xAxisGroup = d3.select("#xAxis")
       .style("transform", `translate(40px, ${bodyHeight + 10}px)`)
       .call(xAxis)
+
 
     let zoom = d3.zoom()
     zoom.on("zoom", function (a, b) {
