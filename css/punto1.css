@@ -26,16 +26,16 @@ body {
   display: none;
 }
 #div1{
-  width: 500px;
-  height: 500px;
+  width: 30%;
+  height: 57%;
   position: absolute;
   left: 50%;
   top: 50%;
   margin: -250px 0 0 -600px;
 }
 #div2{
-  width: 500px;
-  height: 500px;
+  width: 40%;
+  height: 35%;
   margin: 0 auto;
   position: absolute;
   left: 50%;
@@ -68,7 +68,7 @@ background-color: #999999;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: 400px 0 0 -50px;
+  margin: -400px 0 0 -50px;
 
 }
 #var1{
